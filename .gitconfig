@@ -13,6 +13,6 @@
     name = Mics
     email = mics@estiginto.com
 [pull]
-	rebase = true
+    rebase = true
 [init]
     defaultBranch = main

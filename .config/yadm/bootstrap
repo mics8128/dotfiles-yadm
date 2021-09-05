@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# 安裝 starship
+if [[ ! -x $(which starship) ]]; then
+    echo installing starship...
+    sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- -f -b $BIN_PATH > /dev/null
+else
+    echo starship already installed
+fi
