@@ -1,13 +1,6 @@
-###############################################################################
-#                                                                             #
-# Coder generated this configuration file automatically using the information #
-# associated with your Coder account. While you can modify this file, we      #
-# recommend using a Dotfiles repository instead.                              #
-#                                                                             #
-# Learn more about how Coder uses Dotfiles:                                   #
-# https://coder.com/docs/workspaces/personalization#dotfiles-repo             #
-#                                                                             #
-###############################################################################
+#
+# ~/.gitconfig
+#
 
 [user]
     name = Mics

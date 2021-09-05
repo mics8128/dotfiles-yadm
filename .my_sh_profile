@@ -1,0 +1,108 @@
+#
+# ~/.my_sh_profile
+#
+
+#==============================
+# My Sh Profile By Mics
+# this file have to compatible to bash & zsh
+#==============================
+
+#===============
+# PATH
+#===============
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+# set PATH for composer vendor global tools bin
+if [ -d "$HOME/.config/composer/vendor/bin/" ] ; then
+    PATH="$HOME/.config/composer/vendor/bin/:$PATH"
+fi
+
+# set PATH for npm tools
+if [ -d "$HOME/.npm-global/bin" ] ; then
+    PATH=~/.npm-global/bin:$PATH
+fi
+
+#===============
+# custom alias
+#===============
+# ls
+alias ls='ls --color=auto'
+command -v exa &> /dev/null && alias ls=exa
+alias ll='ls -lh'
+alias la='ls -a'
+alias lla='ls -lha'
+alias l=ls
+
+# sudo replacer for alias
+if ! command -v sudo &> /dev/null; then
+    function su_sudo() {
+        echo "You didn't install sudo, replaced by su, please enter root password."
+        su -c "$*"
+    }
+    export SUDO_CMD=su_sudo
+else
+    export SUDO_CMD=sudo
+fi
+
+# systemctl
+if command -v systemctl &> /dev/null; then
+    alias start="$SUDO_CMD systemctl start"
+    alias stop="$SUDO_CMD systemctl stop"
+    alias restart="$SUDO_CMD systemctl restart"
+    alias status="$SUDO_CMD systemctl status"
+    alias enable="$SUDO_CMD systemctl enable"
+    alias disable="$SUDO_CMD systemctl disable"
+fi
+
+# df
+alias df='df -h'
+
+# run vi,vim as nvim
+command -v nvim &> /dev/null && alias vim='nvim'
+command -v nvim &> /dev/null && alias vi='nvim'
+
+# lazy
+command -v lazygit &> /dev/null && alias lg='lazygit'
+command -v lazydocker &> /dev/null && alias ldo='lazydocker'
+
+# zdict
+command -v zdict &> /dev/null && alias d='zdict'
+
+# git
+if command -v git &> /dev/null; then
+    alias checkout='git checkout'
+    alias clone='git clone'
+    alias commit='git commit'
+    alias add='git add'
+    alias gstatus='git status'
+    alias greset='git reset'
+    alias push='git push'
+    alias pull='git pull'
+fi
+
+# php & artisan
+if command -v php &> /dev/null; then
+    alias artisan='php artisan'
+    alias pa='php artisan'
+fi
+
+# composer
+if command -v composer &> /dev/null; then
+    alias cu='composer update'
+    alias ci='composer install'
+fi
+
+# bitwarden
+command -v bw &> /dev/null && alias bwl='export BW_SESSION=$(bw unlock --raw)'
+
+#===============
+# env vars
+#===============
+command -v vim &> /dev/null && export EDITOR=vim
+command -v vim &> /dev/null && export VISUAL=vim
+command -v nvim &> /dev/null && export EDITOR=nvim
+command -v nvim &> /dev/null && export VISUAL=nvim
