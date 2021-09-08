@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# 設定 bin path
-PATH=~/.local/bin:$PATH
-
 # 安裝 starship
 if [[ ! -x $(which starship) ]]; then
     echo installing starship...
